@@ -61,12 +61,15 @@ class robot implements Runnable
                 ImageIO.write(img, "jpeg", os);
                 byte a[] = os.toByteArray();
                 myDesktop md = new myDesktop(a);
+                if(contd == false)
+                    break;
                 nc.write(md);
                 System.out.println("robottttttttt");
                 Thread.sleep(500);
             }
         } catch (Exception e)
         {
+            System.out.println("Robot exception");
             e.printStackTrace();
         }
     }
