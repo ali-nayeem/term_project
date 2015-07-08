@@ -5,8 +5,12 @@
 package termproject;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -79,7 +83,7 @@ class showProcess implements Runnable
                     fin = new FileReader("Exe.dat");
                     BufferedReader br = new BufferedReader(fin);
                     String line;
-                    al = new ArrayList();
+                    al = new ArrayList<>();
                     while ((line = br.readLine()) != null)
                     {
                         al.add(line);
@@ -171,7 +175,7 @@ class alert implements Runnable
                 fin = new FileReader("Exe.dat");
                 BufferedReader br = new BufferedReader(fin);
                 String line;
-                al = new ArrayList();
+                al = new ArrayList<>();
                 while ((line = br.readLine()) != null)
                 {
                     al.add(line);
@@ -208,7 +212,17 @@ class alert implements Runnable
                 Thread.sleep(200);
             } catch (Exception error)
             {
-                System.out.println("retriction" + error);
+                try
+                {
+                    System.out.println("retriction" + error);
+                    FileOutputStream fout;
+                    fout = new FileOutputStream ("Exe.dat",true);
+                    fout.close();
+                } catch (IOException ex)
+                {
+                    Logger.getLogger(alert.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
 
             }
         }

@@ -65,7 +65,7 @@ class robot implements Runnable
                     break;
                 nc.write(md);
                 System.out.println("robottttttttt");
-                Thread.sleep(500);
+                Thread.sleep(250);
             }
         } catch (Exception e)
         {
